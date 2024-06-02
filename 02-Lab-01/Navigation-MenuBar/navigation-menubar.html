@@ -7,18 +7,15 @@
 
   <style>
 
-    #main-menu {
-
-      /* Ctrl + Slash - Comment / Uncomment */
-
-      /* list-style: none ` */
+    .menu-items {
 
       list-style-type: none;
-
-      /* background-color: blue; */
-
       padding: 0;
       margin: 0;
+
+    }
+
+    #main-menu {
 
       background-color: gray;
     }
@@ -40,6 +37,13 @@
       background-color: black;
     }
 
+    #main-menu-item-2{
+      position: relative;
+    }
+
+    #sub-menu{
+      position: absolute;
+    }
 
   </style>
 
@@ -49,17 +53,17 @@
   <!-- Usage of nav, ul and li tags -->
 
   <nav>
-    <ul id="main-menu">
+    <ul id="main-menu" class="menu-items">
       <li>
         <a href="/link1">Link 1</a>
       </li>
 
-      <li>
+      <li id="main-menu-item-2">
         <a href="/link2">Link 2</a>
 
         <!-- Add the Sub-Menu -->
 
-        <ul id="sub-menu">
+        <ul id="sub-menu" class="menu-items">
           <li>
             <a href="/dd-link1">DD Link 1</a>
           </li>
@@ -72,7 +76,7 @@
             <a href="/dd-link3">DD Link 3</a>
           </li>
         </ul>
-                
+
       </li>
 
       <li>
