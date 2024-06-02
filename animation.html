@@ -13,7 +13,9 @@
       width: 200px;
       padding: 14px;
 
-      margin: 0 auto
+      margin: 0 auto;
+
+      text-align: center;
     }
 
     /* #bar1{
@@ -101,6 +103,12 @@
     animation-fill-mode: forwards;
     }
 
+
+    .bar-with-content{
+    display: inline-block;
+    text-align: center;
+  }
+
   </style>
 </head>
 
@@ -108,21 +116,42 @@
 
   <div id="bar-chart">
 
-    <div id="bar1" class="bar">
-      <div id="animated-bar1" class="animated-bar">
+    <div class="bar-with-content">
+      <div class="bar" id="bar1">
+          <div id="animated-bar1" class="animated-bar">
+          </div>
       </div>
+
+      <br/>
+      30%
+
+    </div>
+  
+
+    <div class="bar-with-content">
+      <div id="bar2" class="bar">
+        <div id="animated-bar2" class="animated-bar">
+        </div>
+      </div>
+
+      <br/>
+      40%
+
     </div>
 
-    <div id="bar2" class="bar">
-      <div id="animated-bar2" class="animated-bar">
+    <div class="bar-with-content">
+
+      <div id="bar3" class="bar">
+        <div id="animated-bar3" class="animated-bar">
+        </div>
       </div>
+
+      <br/>
+      20%
+
     </div>
 
-
-    <div id="bar3" class="bar">
-      <div id="animated-bar3" class="animated-bar">
-      </div>
-    </div>
+    <b>Bar Plot </b>
 
   </div>
 
