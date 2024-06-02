@@ -7,7 +7,7 @@
 
   <style>
 
-    ul {
+    #main-menu {
 
       /* Ctrl + Slash - Comment / Uncomment */
 
@@ -23,16 +23,23 @@
       background-color: gray;
     }
 
-    ul > li {
+    #main-menu > li {
       display: inline-block;
     }
 
-    ul > li > a {
+    #main-menu > li > a {
+      display: inline-block;
+
       padding: 8px;
 
       text-decoration: none;
       color: white;
     }
+
+    #main-menu > li > a:hover{
+      background-color: black;
+    }
+
 
   </style>
 
@@ -42,7 +49,7 @@
   <!-- Usage of nav, ul and li tags -->
 
   <nav>
-    <ul>
+    <ul id="main-menu">
       <li>
         <a href="/link1">Link 1</a>
       </li>
