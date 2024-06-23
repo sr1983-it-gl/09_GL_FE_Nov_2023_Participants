@@ -16,6 +16,20 @@ function QuestionAnswerOptions(
   this.questionObj = questionObj;
   this.answerOptionsObj = answerOptionsObj;
   this.correctAnswerObj = correctAnswerObj;
+
+  this.correctAnswer = function(userSuppliedAnswer){
+
+    if (this.correctAnswerObj.answerText == userSuppliedAnswer){
+
+      console.log("Correct Answer");
+      return true;
+    }else{
+
+      console.log("Incorrect Answer")
+      return false;
+    }
+  }
+
 }
 
 // Question-Answer [1]
