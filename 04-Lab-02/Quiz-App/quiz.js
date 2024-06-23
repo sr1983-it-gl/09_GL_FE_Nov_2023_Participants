@@ -140,11 +140,6 @@ function QuizApp(questionAnswerOptionsArrayObj){
     return percentagValue;
   }
 
-  this.init = function(){
-
-    this.addListenersForAnswerButtons();
-  }
-
   this.addListenersForAnswerButtons = function(){
 
     for (let index = 0; index < 4; index ++){
@@ -159,6 +154,56 @@ function QuizApp(questionAnswerOptionsArrayObj){
         console.log("Button is clicked...")
       }
     }
+  }
+
+  this.init = function(){
+
+    this.addListenersForAnswerButtons();
+    this.drawQuizPage();
+  }
+
+  this.drawQuizPage = function(){
+
+    this.drawHeader();
+    this.drawContentAreaForQA();
+    this.drawFooter();
+
+  }
+
+  this.drawHeader = function(){
+    // No Impl Right now
+  }
+
+  this.drawContentAreaForQA = function(){
+
+    const qAObj = this.questionAnswerOptionsArrayObj[this.pageIndex];
+
+    // For Question
+    const questionObj = qAObj.questionObj
+    const questionHtmlElement = document.getElementById("question")
+    questionHtmlElement.innerHTML = questionObj.questionText;
+
+    // For Answer Options
+    const answerOptionsObj = qAObj.answerOptionsObj
+    for (let index = 0; index < 4; index ++){
+
+      const answerOptionObj = answerOptionsObj[index];
+
+      const spanID = ("choice" + index)
+      const answerOptionHtmlElement = document.getElementById(spanID);
+
+      answerOptionHtmlElement.innerHTML = answerOptionObj.answerText
+    }
+  }
+
+  this.drawFooter = function(){
+
+    const progressElement = document.getElementById("progress");
+
+    const totalNoOfQuestions = this.questionAnswerOptionsArrayObj.length;
+
+    progressElement.innerHTML = `Question ${this.pageIndex + 1} of ${totalNoOfQuestions}`;
+
   }
 }
 
