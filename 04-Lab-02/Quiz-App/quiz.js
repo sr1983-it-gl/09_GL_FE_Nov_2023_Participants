@@ -106,10 +106,26 @@ const qA5 = new QuestionAnswerOptions(
 function QuizApp(questionAnswerOptionsArrayObj){
 
   this.questionAnswerOptionsArrayObj = questionAnswerOptionsArrayObj;
+  this.pageIndex = 0;
+  this.score = 0;
 
+  this.getScore = function() {
+    return this.score;
+  }
+
+  this.incrementScore = function(){
+    this.score ++;
+  }
+
+  this.calculatePercentage = function(){
+
+    // (3 /  5) * 100
+
+    const percentagValue  = (this.getScore() 
+      / this.questionAnswerOptionsArrayObj.length) * 100;
+    return percentagValue;
+  }
 }
-
-
 
 const quizApp = new QuizApp(
   [qA1, qA2, qA3, qA4, qA5]
