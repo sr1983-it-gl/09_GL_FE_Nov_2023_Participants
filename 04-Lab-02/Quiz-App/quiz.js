@@ -10,10 +10,12 @@ function Answer (answerText){
   this.answerText = answerText;
 }
 
-function QuestionAnswerOptions(questionObj, answerOptionsObj){
+function QuestionAnswerOptions(
+  questionObj, answerOptionsObj, correctAnswerObj){
 
   this.questionObj = questionObj;
   this.answerOptionsObj = answerOptionsObj;
+  this.correctAnswerObj = correctAnswerObj;
 }
 
 // Question-Answer [1]
@@ -27,7 +29,8 @@ const answer4Q1 = new Answer("HTML");
 
 const qA1 = new QuestionAnswerOptions(
   question1, 
-  [answer1Q1, answer2Q1, answer3Q1, answer4Q1]
+  [answer1Q1, answer2Q1, answer3Q1, answer4Q1],
+  answer1Q1
 )
 
 // Question-Answer [2]
@@ -94,4 +97,10 @@ const answer4Q5 = new Answer("All");
 const qA5 = new QuestionAnswerOptions(
   question5, 
   [answer1Q5, answer2Q5, answer3Q5, answer4Q5]
+)
+
+
+
+const quizApp = new QuizApp(
+  // [1, 2, 3, 4, 5]
 )
