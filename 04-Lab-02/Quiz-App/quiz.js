@@ -152,6 +152,8 @@ function QuizApp(questionAnswerOptionsArrayObj){
       answerButtonElement.onclick = function(event){
 
         console.log("Button is clicked...")
+
+        
       }
     }
   }
