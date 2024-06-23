@@ -142,6 +142,8 @@ function QuizApp(questionAnswerOptionsArrayObj){
 
   this.addListenersForAnswerButtons = function(){
 
+    const currentQuizAppObj = this;
+
     for (let index = 0; index < 4; index ++){
 
       // btn0, btn1, btn2, btn3
@@ -153,7 +155,25 @@ function QuizApp(questionAnswerOptionsArrayObj){
 
         console.log("Button is clicked...")
 
+        const answerButtonElement = event.currentTarget
+        const spanElement = answerButtonElement.children[0]
+        const userSuppliedAnswer = spanElement.innerHTML
+
+        console.log(`User Supplied Answer -> ${userSuppliedAnswer}`)
+
+        const qAnswerOptionsObj = currentQuizAppObj.questionAnswerOptionsArrayObj[
+            currentQuizAppObj.pageIndex];
         
+        const result 
+          = qAnswerOptionsObj.correctAnswer(userSuppliedAnswer);
+        console.log(`Result is ${result}`);
+        
+        if (result){
+          currentQuizAppObj.incrementScore(); 
+        }
+
+        console.log(`Score is ${currentQuizAppObj.getScore()}`)
+
       }
     }
   }
