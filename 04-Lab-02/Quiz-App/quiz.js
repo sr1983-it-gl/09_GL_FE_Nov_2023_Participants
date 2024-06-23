@@ -142,6 +142,7 @@ function QuizApp(questionAnswerOptionsArrayObj){
 
   this.addListenersForAnswerButtons = function(){
 
+    // quizApp
     const currentQuizAppObj = this;
 
     for (let index = 0; index < 4; index ++){
@@ -155,8 +156,8 @@ function QuizApp(questionAnswerOptionsArrayObj){
 
         console.log("Button is clicked...")
 
-        const answerButtonElement = event.currentTarget
-        const spanElement = answerButtonElement.children[0]
+        const answerButtonElementTarget = event.currentTarget
+        const spanElement = answerButtonElementTarget.children[0]
         const userSuppliedAnswer = spanElement.innerHTML
 
         console.log(`User Supplied Answer -> ${userSuppliedAnswer}`)
@@ -174,8 +175,32 @@ function QuizApp(questionAnswerOptionsArrayObj){
 
         console.log(`Score is ${currentQuizAppObj.getScore()}`)
 
+        // Load the next-question page / Load the result page
+
+        //  4 == (5 - 1)
+        if (currentQuizAppObj.pageIndex == (currentQuizAppObj.questionAnswerOptionsArrayObj.length - 1)){
+
+          currentQuizAppObj.drawResultPage();
+        }else{
+
+          currentQuizAppObj.pageIndex ++;
+          currentQuizAppObj.addListenersForAnswerButtons();
+          currentQuizAppObj.drawQuizPage()
+        }
+
       }
     }
+  }
+
+  this.drawResultPage = function(){
+
+    let finalScoreHtmlFragment =
+      `<h1>Result</h1>
+        <h2 id='score'>Your scores: ${this.getScore()}. Percentage is ${this.calculatePercentage()}</h2>         
+      `
+    let quizElement = document.getElementById("quiz");
+    quizElement.innerHTML = finalScoreHtmlFragment;
+
   }
 
   this.init = function(){
