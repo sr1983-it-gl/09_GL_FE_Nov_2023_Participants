@@ -46,7 +46,8 @@ const answer4Q2 = new Answer("XML");
 
 const qA2 = new QuestionAnswerOptions(
   question2, 
-  [answer1Q2, answer2Q2, answer3Q2, answer4Q2]
+  [answer1Q2, answer2Q2, answer3Q2, answer4Q2],
+  answer3Q2
 )
 
 
@@ -63,7 +64,8 @@ const answer4Q3 = new Answer("Node JS");
 
 const qA3 = new QuestionAnswerOptions(
   question3, 
-  [answer1Q3, answer2Q3, answer3Q3, answer4Q3]
+  [answer1Q3, answer2Q3, answer3Q3, answer4Q3],
+  answer1Q3
 )
 
 // Question-Answer [4]
@@ -79,7 +81,8 @@ const answer4Q4 = new Answer("All");
 
 const qA4 = new QuestionAnswerOptions(
   question4, 
-  [answer1Q4, answer2Q4, answer3Q4, answer4Q4]
+  [answer1Q4, answer2Q4, answer3Q4, answer4Q4],
+  answer1Q4
 )
 
 
@@ -96,11 +99,18 @@ const answer4Q5 = new Answer("All");
 
 const qA5 = new QuestionAnswerOptions(
   question5, 
-  [answer1Q5, answer2Q5, answer3Q5, answer4Q5]
+  [answer1Q5, answer2Q5, answer3Q5, answer4Q5],
+  answer2Q5
 )
+
+function QuizApp(questionAnswerOptionsArrayObj){
+
+  this.questionAnswerOptionsArrayObj = questionAnswerOptionsArrayObj;
+
+}
 
 
 
 const quizApp = new QuizApp(
-  // [1, 2, 3, 4, 5]
+  [qA1, qA2, qA3, qA4, qA5]
 )
