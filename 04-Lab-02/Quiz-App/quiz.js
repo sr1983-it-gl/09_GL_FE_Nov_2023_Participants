@@ -139,8 +139,31 @@ function QuizApp(questionAnswerOptionsArrayObj){
       / this.questionAnswerOptionsArrayObj.length) * 100;
     return percentagValue;
   }
+
+  this.init = function(){
+
+    this.addListenersForAnswerButtons();
+  }
+
+  this.addListenersForAnswerButtons = function(){
+
+    for (let index = 0; index < 4; index ++){
+
+      // btn0, btn1, btn2, btn3
+
+      let buttonID = ("btn" + index)
+      const answerButtonElement = document.getElementById(buttonID);
+
+      answerButtonElement.onclick = function(event){
+
+        console.log("Button is clicked...")
+      }
+    }
+  }
 }
 
 const quizApp = new QuizApp(
   [qA1, qA2, qA3, qA4, qA5]
 )
+
+quizApp.init()
