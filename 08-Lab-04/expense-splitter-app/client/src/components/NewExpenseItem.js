@@ -4,39 +4,76 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-const NewExpenseItem = () => {
+import {getAllPayeeNames} from "../service/expense-utils"
+import { useRef } from 'react';
+
+import {postExpenseItem} from "../service/expense"
+
+const NewExpenseItem = ({expenseItems}) => {
 
   const [show, setShow] = useState(false);
   
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const uniquePayeeNames = getAllPayeeNames(expenseItems)
   
+  // Ref Hooks
+  const expenseDescriptionRef = useRef(null);
+  // payeeName
+  // date
+  // amount 
+
+  const handleExpenseCreation = (event) => {
+
+    event.preventDefault()
+    
+    // get the values - expenseDescriptiion, payeeName, date, price
+    const expenseDescriptionValue = expenseDescriptionRef.current.value    
+      // ;payeeName
+      // date
+      // amount
+
+    // 
+    const newExpenseItem = {
+        "expenseDescription": expenseDescriptionValue,
+        // "payeeName": "?",
+        // "price": ?,
+        // "date": "?"
+    }
+
+    // TODO
+    // postExpenseItem(newExpenseItem)
+    // print(response)
+
+    handleClose();
+  }
+
   function newExpenseItemForm() {
 
     return (
-      <Form>
+      <Form onSubmit={handleExpenseCreation}>
 
         <Form.Group className="mb-3" controlId="expenseDescription">
           <Form.Label>Expense Description</Form.Label>
-          <Form.Control type="text" placeholder="Expense Description" />
+          <Form.Control type="text" placeholder="Expense Description" 
+          ref={expenseDescriptionRef} />
         </Form.Group>
   
         <Form.Group className="mb-3" controlId="payeeName">
           <Form.Label>Payee Name</Form.Label>
 
           <Form.Select aria-label="Default select example">
-            <option>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option>SELECT A PAYEE</option>
+            {
+              uniquePayeeNames.map( (payeeName) => {
 
-            {/*
-              // array
-              // array.map ( (payeeName) => {
-                }) 
-              // Dynamic Code
-            */}
+                return (
+                  <option value={payeeName}>{payeeName}</option>
+                )
+              })
+            }
+
           </Form.Select>
 
         </Form.Group>

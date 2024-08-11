@@ -38,7 +38,7 @@ const ExpenseSplitterApp = () => {
 
     <h2>Expense Manager Application</h2>
 
-    <NewExpenseItem></NewExpenseItem>
+    <NewExpenseItem expenseItems={expenseItems}></NewExpenseItem>
 
     <ExpenseItemsView expenseItems={expenseItems}></ExpenseItemsView>
 
