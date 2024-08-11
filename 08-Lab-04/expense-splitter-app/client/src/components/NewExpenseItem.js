@@ -20,31 +20,44 @@ const NewExpenseItem = ({expenseItems}) => {
   
   // Ref Hooks
   const expenseDescriptionRef = useRef(null);
+  const payeeNameRef = useRef(null);
+  const expenseDateRef = useRef(null);
+  const priceRef = useRef(null);
   // payeeName
   // date
   // amount 
 
-  const handleExpenseCreation = (event) => {
+  const handleExpenseCreation = async (event) => {
 
     event.preventDefault()
     
     // get the values - expenseDescriptiion, payeeName, date, price
-    const expenseDescriptionValue = expenseDescriptionRef.current.value    
+    const expenseDescriptionValue = expenseDescriptionRef.current.value   
+    const payeeNameValue = payeeNameRef.current.value
+    const expenseDateValue = 
+      new Date(expenseDateRef.current.value)
+    const priceValue = 
+      parseFloat(priceRef.current.value)
+    
+
       // ;payeeName
       // date
       // amount
 
     // 
     const newExpenseItem = {
-        "expenseDescription": expenseDescriptionValue,
-        // "payeeName": "?",
-        // "price": ?,
-        // "date": "?"
+        expenseDescription: expenseDescriptionValue,
+        payeeName: payeeNameValue,
+        price: priceValue,
+        date: expenseDateValue
     }
 
-    // TODO
-    // postExpenseItem(newExpenseItem)
-    // print(response)
+    console.log(`New Expense Item - Before Creation 
+      ${JSON.stringify(newExpenseItem)}`)
+
+    const response = await postExpenseItem(newExpenseItem)
+    console.log(`New Expense Item - After Creation 
+      ${JSON.stringify(response)}`)
 
     handleClose();
   }
@@ -63,7 +76,8 @@ const NewExpenseItem = ({expenseItems}) => {
         <Form.Group className="mb-3" controlId="payeeName">
           <Form.Label>Payee Name</Form.Label>
 
-          <Form.Select aria-label="Default select example">
+          <Form.Select aria-label="Default select example" 
+          ref={payeeNameRef}>
             <option>SELECT A PAYEE</option>
             {
               uniquePayeeNames.map( (payeeName) => {
@@ -80,12 +94,13 @@ const NewExpenseItem = ({expenseItems}) => {
 
         <Form.Group className="mb-3" controlId="expenseDate">
           <Form.Label>Expense Date</Form.Label>
-          <Form.Control type="date"/>
+          <Form.Control type="date" ref={expenseDateRef}/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="expensePrice">
           <Form.Label>Price</Form.Label>
-          <Form.Control type="number" placeholder="Expense Price"/>
+          <Form.Control type="number" placeholder="Expense Price"
+            ref={priceRef}/>
         </Form.Group>
 
       {/* //
