@@ -16,14 +16,39 @@ const NewExpenseItem = () => {
 
     return (
       <Form>
+
         <Form.Group className="mb-3" controlId="expenseDescription">
           <Form.Label>Expense Description</Form.Label>
           <Form.Control type="text" placeholder="Expense Description" />
         </Form.Group>
   
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+        <Form.Group className="mb-3" controlId="payeeName">
+          <Form.Label>Payee Name</Form.Label>
+
+          <Form.Select aria-label="Default select example">
+            <option>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+
+            {/*
+              // array
+              // array.map ( (payeeName) => {
+                }) 
+              // Dynamic Code
+            */}
+          </Form.Select>
+
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="expenseDate">
+          <Form.Label>Expense Date</Form.Label>
+          <Form.Control type="date"/>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="expensePrice">
+          <Form.Label>Price</Form.Label>
+          <Form.Control type="number" placeholder="Expense Price"/>
         </Form.Group>
 
       {/* //
@@ -32,9 +57,15 @@ const NewExpenseItem = () => {
         Price [Number] 
        */}
         
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+      
+        <Button variant="primary" type='submit' onClick={handleClose}>
+              Submit
+            </Button>
+        
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+
       </Form>
     );
   }
@@ -57,20 +88,7 @@ const NewExpenseItem = () => {
             {
               newExpenseItemForm()
             }
-          </Modal.Body>
-      
-      
-          <Modal.Footer>
-      
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-        
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          
-      </Modal.Footer>
+          </Modal.Body>              
       
         </Modal>
       </>
