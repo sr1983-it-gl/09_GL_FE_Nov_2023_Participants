@@ -1,6 +1,6 @@
 
 const getAllPayeeNames = (expenseItems) => {
-  
+
   const uniquePayeeNames = [];
 
   expenseItems.forEach((expenseItem) => {
@@ -14,4 +14,31 @@ const getAllPayeeNames = (expenseItems) => {
 
   return uniquePayeeNames;
 }
-export { getAllPayeeNames }
+
+const getTotalExpenseByPayee = (expenseItems, payeeName) => {
+
+  let totalExpense = 0;
+
+  expenseItems.forEach((expenseItem) => {
+
+    if (expenseItem.payeeName === payeeName) {
+      totalExpense += expenseItem.price;
+    }
+  })
+  return totalExpense;
+}
+
+
+const getGrandTotalExpenses = (expenseItems) => {
+
+  let totalExpense = 0;
+
+  expenseItems.forEach((expenseItem) => {
+
+    totalExpense += expenseItem.price;
+  })
+  return totalExpense;
+}
+
+
+export { getAllPayeeNames, getTotalExpenseByPayee,getGrandTotalExpenses }

@@ -7,6 +7,7 @@ import {Container} from "react-bootstrap"
 
 import { useState } from "react"
 import { NewExpenseItem } from "./NewExpenseItem"
+import { ExpenseSummary } from "./ExpenseSummary"
 
 const ExpenseSplitterApp = () => {
 
@@ -41,6 +42,8 @@ const ExpenseSplitterApp = () => {
     <NewExpenseItem expenseItems={expenseItems}></NewExpenseItem>
 
     <ExpenseItemsView expenseItems={expenseItems}></ExpenseItemsView>
+
+    <ExpenseSummary expenseItems={expenseItems}></ExpenseSummary>
 
     </Container>
   )  
