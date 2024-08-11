@@ -1,6 +1,9 @@
 import { useEffect } from "react"
 
 import {getAllExpenseItems} from "../service/expense"
+import { ExpenseItemsView } from "./ExpenseItemsView"
+
+import {Container} from "react-bootstrap"
 
 const ExpenseSplitterApp = () => {
 
@@ -24,12 +27,13 @@ const ExpenseSplitterApp = () => {
   }, [])
 
   return (
-    <div>
+    <Container>
 
-{/* Include the ExpenseItemsView component */}
-      
-      ExpenseSplitter App Component
-    </div>
+    <h2>Expense Manager Application</h2>
+
+    <ExpenseItemsView></ExpenseItemsView>
+
+    </Container>
   )  
 
 }
