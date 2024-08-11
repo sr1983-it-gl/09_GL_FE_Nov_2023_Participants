@@ -27,7 +27,7 @@
 
 import Table from 'react-bootstrap/Table';
 
-const ExpenseItemsView = () => {
+const ExpenseItemsView = ({expenseItems}) => {
 
   const sampleExpenseItems = [
     {
@@ -67,7 +67,7 @@ const ExpenseItemsView = () => {
         </thead>
         <tbody>
           {
-            sampleExpenseItems.map( (expenseItem, index) => {
+            expenseItems.map( (expenseItem, index) => {
                 
               return (
                 <tr>

@@ -5,10 +5,15 @@ import { ExpenseItemsView } from "./ExpenseItemsView"
 
 import {Container} from "react-bootstrap"
 
+import { useState } from "react"
+import { NewExpenseItem } from "./NewExpenseItem"
+
 const ExpenseSplitterApp = () => {
 
   // Expense-Items
   // useEffect
+
+  const [expenseItems, setExpenseItems] = useState([])
 
   useEffect( () => {
 
@@ -17,6 +22,8 @@ const ExpenseSplitterApp = () => {
       const response = await getAllExpenseItems()
       console.log(`Expense Items -> ${JSON.stringify(response)}`)
   
+      setExpenseItems(response)
+
     }
 
     getAllExpenseItemsInvoker()
@@ -31,7 +38,9 @@ const ExpenseSplitterApp = () => {
 
     <h2>Expense Manager Application</h2>
 
-    <ExpenseItemsView></ExpenseItemsView>
+    <NewExpenseItem></NewExpenseItem>
+
+    <ExpenseItemsView expenseItems={expenseItems}></ExpenseItemsView>
 
     </Container>
   )  
